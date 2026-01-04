@@ -13,6 +13,18 @@ def process_trend_data(trend_data, keyword):
     time_series = df[keyword].values
     dates = df.index.tolist()
     
+    first_nonzero = 0
+    for i, val in enumerate(time_series):
+        if val > 0:
+            first_nonzero = i
+            break
+    
+    time_series = time_series[first_nonzero:]
+    dates = dates[first_nonzero:]
+    
+    if len(time_series) == 0:
+        return {'error': 'No data available for this keyword'}
+    
     results['dates'] = [str(d) for d in dates]
     results['values'] = time_series.tolist()
     
@@ -28,6 +40,9 @@ def process_trend_data(trend_data, keyword):
             'seasonal': stl_result.seasonal.tolist(),
             'resid': stl_result.resid.tolist()
         }
+    else:
+        results['stl'] = None
+        results['stl_message'] = f"Not enough data for STL decomposition (need 24+ months, have {len(time_series)})"
     
     if len(time_series) >= 12:
         try:
@@ -36,25 +51,59 @@ def process_trend_data(trend_data, keyword):
             
             pw = piecewise_regression.Fit(x, values, n_breakpoints=1)
             res = pw.get_results()
+            
+            if res is None or not isinstance(res, dict):
+                results['piecewise'] = None
+                results['piecewise_message'] = "Piecewise regression could not converge on this data"
+                return results
+            
             est = res.get("estimates", {})
             
-            results['piecewise'] = {
-                'breakpoint': est.get("breakpoint1", None),
-                'slope1': est.get("alpha1", None),
-                'slope2': est.get("alpha2", None)
-            }
+            if not est:
+                results['piecewise'] = None
+                results['piecewise_message'] = "No valid estimates found from piecewise regression"
+                return results
+            
+            bp_dict = est.get("breakpoint1", None)
+            slope1_dict = est.get("alpha1", None)
+            slope2_dict = est.get("alpha2", None)
+            const_dict = est.get("const", None)
+            
+            if bp_dict and slope1_dict and slope2_dict and const_dict:
+                bp = float(bp_dict.get("estimate", 0))
+                slope1 = float(slope1_dict.get("estimate", 0))
+                slope2 = float(slope2_dict.get("estimate", 0))
+                const1 = float(const_dict.get("estimate", 0))
+                
+                bpIndex = int(round(bp))
+                
+                line1_y = []
+                for i in range(bpIndex + 1):
+                    line1_y.append(const1 + slope1 * i)
+                
+                y_at_bp = const1 + slope1 * bp
+                line2_y = []
+                for i in range(bpIndex, len(time_series)):
+                    line2_y.append(y_at_bp + slope2 * (i - bp))
+                
+                results['piecewise'] = {
+                    'breakpoint': bp,
+                    'breakpoint_index': bpIndex,
+                    'slope1': slope1,
+                    'slope2': slope2,
+                    'line1_y': line1_y,
+                    'line2_y': line2_y
+                }
+            else:
+                results['piecewise'] = None
+                results['piecewise_message'] = "Could not find a valid breakpoint in the data"
         except Exception as e:
-            results['piecewise'] = {
-                'breakpoint': None,
-                'slope1': None,
-                'slope2': None
-            }
+            print(f"  ERROR: Piecewise regression failed: {e}")
+            results['piecewise'] = None
+            results['piecewise_message'] = "Piecewise regression analysis failed for this dataset"
     else:
-        results['piecewise'] = {
-            'breakpoint': None,
-            'slope1': None,
-            'slope2': None
-        }
+        results['piecewise'] = None
+        results['piecewise_message'] = f"Not enough data for piecewise regression (need 12+ months, have {len(time_series)})"
     
     regional_data = trend_data['interest_by_region']
     if not regional_data.empty:

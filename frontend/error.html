@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - NZ Trends Analyzer</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>No Data Found</h1>
+        <p class="subtitle">We couldn't find any trend data for your search</p>
+        
+        <div class="error-box">
+            <p><strong>Search term:</strong> "{{ keyword }}"</p>
+            <p><strong>Issue:</strong> {{ error_message }}</p>
+        </div>
+
+        <a href="/" class="back-btn">Search Again</a>
+    </div>
+</body>
+</html>

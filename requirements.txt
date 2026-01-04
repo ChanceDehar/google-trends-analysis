@@ -1,0 +1,6 @@
+Flask>=3.0.0
+pytrends>=4.9.0
+pandas>=2.1.0
+numpy>=1.26.0
+statsmodels>=0.14.0
+piecewise-regression>=1.2.0

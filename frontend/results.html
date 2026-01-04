@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - {{ keyword }}</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+</head>
+<body>
+    <div class="results-container">
+        <h1>Search Results</h1>
+        
+        <div class="summary">
+            <p>You searched data on <strong>"{{ keyword }}"</strong>, for the last <strong>{{ timeframe_display }}</strong>.</p>
+            <p>It was most commonly searched on <strong>{{ results.peak_date }}</strong>.</p>
+        </div>
+
+        <div class="graphs">
+            <h2>Trend Over Time</h2>
+            <div id="trend-plot"></div>
+
+            <h2>STL Decomposition</h2>
+            {% if results.stl %}
+                <div id="stl-plot"></div>
+            {% else %}
+                <div class="info-message">{{ results.stl_message }}</div>
+            {% endif %}
+
+            <h2>Piecewise Regression</h2>
+            {% if results.piecewise %}
+                <div id="piecewise-plot"></div>
+            {% else %}
+                <div class="info-message">{{ results.piecewise_message }}</div>
+            {% endif %}
+        </div>
+
+        <div class="map-section">
+            <h2>Regional Interest</h2>
+            <p>This term was mostly searched in <strong>{{ results.top_region.name }}</strong>.</p>
+            <div id="map"></div>
+        </div>
+
+        <a href="/" class="back-btn">Search Again</a>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const resultsData = {{ results|tojson }};
+        const keyword = "{{ keyword }}";
+    </script>
+    <script src="functions/plots.js"></script>
+    <script src="functions/map.js"></script>
+</body>
+</html>

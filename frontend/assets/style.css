@@ -78,3 +78,302 @@ button {
 button:hover {
     background: #2d5f3d;
 }
+
+.error-box {
+    background: #f8d7da;
+    border: 2px solid #f5c6cb;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 25px 0;
+}
+
+.error-box p {
+    color: #721c24;
+    margin-bottom: 10px;
+}
+
+.error-box p:last-child {
+    margin-bottom: 0;
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #1a472a;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.back-btn:hover {
+    background: #2d5f3d;
+}
+
+.results-container {
+    max-width: 1100px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    margin: 40px auto;
+}
+
+.results-container h1 {
+    color: #1a472a;
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.summary {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+.summary p {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.summary p:last-child {
+    margin-bottom: 0;
+}
+
+.graphs {
+    margin-bottom: 40px;
+}
+
+.graphs h2 {
+    color: #1a472a;
+    font-size: 22px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+#trend-plot, #stl-plot, #piecewise-plot {
+    margin-bottom: 30px;
+}
+
+.info-message {
+    background: #d1ecf1;
+    border: 2px solid #bee5eb;
+    color: #0c5460;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.map-section {
+    margin-bottom: 40px;
+}
+
+.map-section h2 {
+    color: #1a472a;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.map-section p {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+#map {
+    height: 400px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #1a472a;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.back-btn:hover {
+    background: #2d5f3d;
+}
+
+.results-container {
+    max-width: 900px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    margin: 40px auto;
+}
+
+.results-container h1 {
+    color: #1a472a;
+    font-size: 32px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.results-container .subtitle {
+    text-align: center;
+    color: #2d5f3d;
+    margin-bottom: 30px;
+}
+
+.stats-box {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.stats-box p {
+    margin: 8px 0;
+    color: #333;
+}
+
+.graph-section {
+    margin-bottom: 35px;
+}
+
+.graph-section h2 {
+    color: #1a472a;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.map-section {
+    margin-bottom: 30px;
+}
+
+.map-section h2 {
+    color: #1a472a;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+#map {
+    height: 400px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #1a472a;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.back-btn:hover {
+    background: #2d5f3d;
+}
+
+.results-container {
+    max-width: 1000px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    margin: 40px auto;
+}
+
+.results-container h1 {
+    color: #1a472a;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.meta {
+    color: #2d5f3d;
+    margin-bottom: 30px;
+}
+
+.graphs {
+    margin-bottom: 40px;
+}
+
+.graphs h2 {
+    color: #1a472a;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.graphs img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.stats-box {
+    background: #f5f5f5;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+.stats-box h2 {
+    color: #1a472a;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.stat:last-child {
+    border-bottom: none;
+}
+
+.stat .label {
+    color: #555;
+    font-weight: bold;
+}
+
+.stat .value {
+    color: #1a472a;
+}
+
+.map-section h2 {
+    color: #1a472a;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+#map {
+    height: 400px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #1a472a;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.back-btn:hover {
+    background: #2d5f3d;
+}

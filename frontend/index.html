@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NZ Trends Analyzer</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>NZ Google Trends Analyzer</h1>
+        <p class="subtitle">Statistical analysis of search trends in New Zealand</p>
+        
+        <form action="/analyze" method="POST">
+            <label for="keyword">Search Term</label>
+            <input type="text" 
+                   id="keyword" 
+                   name="keyword" 
+                   placeholder="e.g. coffee, rugby, tourism" 
+                   required>
+            
+            <label for="timeframe">Time Range</label>
+            <select id="timeframe" name="timeframe">
+                <option value="now 1-d">Past Day</option>
+                <option value="now 7-d">Past Week</option>
+                <option value="today 1-m">Past Month</option>
+                <option value="today 3-m">Past 3 Months</option>
+                <option value="today 12-m" selected>Past Year</option>
+                <option value="today 5-y">Past 5 Years</option>
+                <option value="all">All Time</option>
+            </select>
+            
+            <button type="submit">Analyze Trends</button>
+        </form>
+    </div>
+</body>
+</html>
